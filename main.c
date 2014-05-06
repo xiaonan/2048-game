@@ -13,15 +13,6 @@ int main(void)
 
     initArr(arr);
     printWin(arr);
-    /*
-    do {
-        char  arrow;
-        arrow = getchar();
-        changeArr(arr, arrow);
-        //printf("SCORE: %d\n", SCORE);
-    } while(1);
-
-    */
 
     /* Initialize the window parameters */
     mvprintw(0,0,"%s","Press F1 to exit");
@@ -31,20 +22,23 @@ int main(void)
 
         switch(ch)
         {
-            case KEY_LEFT:
+            //case KEY_LEFT:
+            case 'h':
             leftArrow(arr);
             printWin(arr);
             break;
-            case KEY_RIGHT:
+            //case KEY_RIGHT:
+            case 'l':
             rightArrow(arr);
             printWin(arr);
             break;
-            case KEY_UP:
+            //case KEY_UP:
+            case 'k':
             upArrow(arr);
             printWin(arr);
             break;
-            case KEY_DOWN:
-            upArrow(arr);
+            //case KEY_DOWN:
+            case 'j':
             downArrow(arr);
             printWin(arr);
             break;
@@ -60,9 +54,8 @@ void printWin(int arr[HIGHT][WIDTH])
     WIN win[HIGHT][WIDTH];
     int i, j;
     initscr();/* Start curses mode */
-    start_color();/* Start the color                                     functionality */
-    cbreak();/* Line buffering disabled, Pass on
-              * everty thing to me */
+    start_color();/* Start the color functionality */
+    cbreak();/* Line buffering disabled, Pass on * everty thing to me */
     keypad(stdscr, TRUE);/* I need that nift                        y F1 */
     noecho();
     init_pair(1, COLOR_CYAN, COLOR_BLACK);
