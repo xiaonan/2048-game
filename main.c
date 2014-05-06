@@ -1,8 +1,19 @@
+/**
+ * @file main.c
+ * @Synopsis  2048游戏
+ * @author chenxiaonan
+ * @version 1.0
+ * @date 2014-05-06
+ */
+
 #include <math.h> 
 #include <stdlib.h> 
 #include <string.h> 
 #include "2048.h"
 #include "win.h"
+
+
+//extern int SCORE;
 
 void printWin(int arr[HIGHT][WIDTH]);
 
@@ -27,7 +38,6 @@ int main(void)
     /* Initialize the window parameters */
     mvprintw(0,0,"%s","Press F1 to exit");
     while((ch = getch()) != KEY_F(1))
-    //while((ch = getchar())){
     {
         switch(ch)
         {
@@ -53,7 +63,7 @@ int main(void)
             break;
         }
     }
-    endwin();/* End curses mode  */
+    endwin();
     return 0;
 }   
 
@@ -86,6 +96,8 @@ void printWin(int arr[HIGHT][WIDTH])
             attron(COLOR_PAIR((int)log2(arr[i][j])%7 + 1));
             mvprintw(thewin->starty + WINY/2 , thewin->startx + WINX/2-(int)(log10(arr[i][j]) + 1/2),"%d", arr[i][j]);
             attroff(COLOR_PAIR((int)log2(arr[i][j])%7 + 1));
+            move(0,0);
+//            mvprintw(10,10,"%s%d","Your Score: ", SCORE);
         }
     }
     refresh();
