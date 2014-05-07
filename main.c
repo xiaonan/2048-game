@@ -6,12 +6,11 @@
  * @date 2014-05-06
  */
 
-#include <math.h> 
 #include <stdlib.h> 
 #include <string.h> 
 #include "2048.h"
 #include "win.h"
-
+#include <math.h> 
 
 //extern int SCORE;
 
@@ -86,6 +85,7 @@ void printWin(int arr[HIGHT][WIDTH])
     {
         for(j = 0; j < WIDTH; j++)
         {
+            int offset;
             WIN *thewin = &win[i][j];
             init_win_params(&win[i][j], j-3, i-3);
             print_win_params(&win[i][j]);
@@ -93,9 +93,19 @@ void printWin(int arr[HIGHT][WIDTH])
             create_box(&win[i][j], TRUE);
             attroff(COLOR_PAIR(7));
             mvprintw(thewin->starty + WINY/2 , thewin->startx + WINX/2-4,"%s", "         ");
-            attron(COLOR_PAIR((int)log2(arr[i][j])%7 + 1));
-            mvprintw(thewin->starty + WINY/2 , thewin->startx + WINX/2-(int)(log10(arr[i][j]) + 1/2),"%d", arr[i][j]);
-            attroff(COLOR_PAIR((int)log2(arr[i][j])%7 + 1));
+            if(arr[i][j] == 0){
+                attron(COLOR_PAIR(1));
+                offset = 0;
+            } else {
+                attron(COLOR_PAIR((int)log2((double)arr[i][j])%7 + 1));
+                offset = (int)(log10((double)arr[i][j])/2);
+            }
+            mvprintw(thewin->starty + WINY/2 , thewin->startx + WINX/2-offset,"%d", arr[i][j]);
+            if(arr[i][j] == 0){
+                attroff(COLOR_PAIR(1));
+            } else {
+                attroff(COLOR_PAIR((int)log2((double)arr[i][j])%7 + 1));
+            }
             move(0,0);
 //            mvprintw(10,10,"%s%d","Your Score: ", SCORE);
         }
