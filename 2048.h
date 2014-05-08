@@ -3,8 +3,7 @@
 #include <time.h>
 #define HIGHT 4
 #define WIDTH 4
-static int SCORE = 0;
-
+int SCORE;
 static int flag = 0;
 void dropZero(int arr[HIGHT][WIDTH]);
 void merge(int arr[HIGHT][WIDTH]);

@@ -12,7 +12,7 @@
 #include "win.h"
 #include <math.h> 
 
-//extern int SCORE;
+extern int SCORE;
 
 void printWin(int arr[HIGHT][WIDTH]);
 
@@ -106,8 +106,8 @@ void printWin(int arr[HIGHT][WIDTH])
             } else {
                 attroff(COLOR_PAIR((int)log2((double)arr[i][j])%7 + 1));
             }
-            move(0,0);
-//            mvprintw(10,10,"%s%d","Your Score: ", SCORE);
+            mvprintw(10,10,"%s%d","Your Score: ", SCORE);
+            move(1000,10000);
         }
     }
     refresh();
