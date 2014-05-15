@@ -267,9 +267,11 @@ void initArr(int arr[HIGHT][WIDTH])
     srand((unsigned int)time(0));
     luckyNum1 = rand() % HIGHT*WIDTH;
     srand((unsigned int)time(0));
+
     do{
         luckyNum2 = rand() % HIGHT*WIDTH;
     } while(luckyNum1 == luckyNum2);
+
     for(i = 0; i < HIGHT; i++)
     {
         for(j = 0; j < WIDTH; j++)

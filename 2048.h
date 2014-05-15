@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#define HIGHT 4
-#define WIDTH 4
+#define HIGHT 6
+#define WIDTH 6
 int SCORE;
 static int flag = 0;
 void dropZero(int arr[HIGHT][WIDTH]);

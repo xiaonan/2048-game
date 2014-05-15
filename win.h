@@ -1,6 +1,4 @@
 #include <ncurses.h>
-#define HIGHT 4
-#define WIDTH 4
 #define WINY 4
 #define WINX 10
 typedef struct _win_border_struct {
